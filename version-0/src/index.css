@@ -3,3 +3,30 @@
   line-height: 1.5;
   font-weight: 400;
 }
+
+body {
+  color: #111517;
+  background-color: #fafafa;
+}
+
+nav {
+  padding: 0;
+  margin: -1rem;
+  background: white;
+  height: 90px; /* adjust */
+  box-shadow: 0 2px 4px -2px rgba(0,0,0,0.2);
+  margin-bottom: 3rem;
+}
+
+ul {
+  padding-right: 3rem;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  color: #111517;
+  align-items: baseline;
+}
+
+a {
+  text-decoration: none;
+}
