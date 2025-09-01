@@ -2,18 +2,17 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import SavedCountries from './pages/SavedCountries';
 import CountryDetail from './pages/CountryDetail';
+import localData from '/localData.js';
 
 function App() {
+
   return (
     <div className='countryHeader'>
       <nav>
-        <ul>
+        <ul className='navBar'>
           <li>
             <Link to="/"><h1>Where in the world?</h1></Link>
           </li>
-          
-          
-          
           <li>
             <Link to="/savedCountries">Saved Countries</Link>
           </li>  
@@ -25,7 +24,7 @@ function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={ <Home countriesData={localData} />} />
         <Route path="/savedCountries" element={<SavedCountries />} />
         <Route path="/countryDetails" element={<CountryDetail />} />
         </Routes>

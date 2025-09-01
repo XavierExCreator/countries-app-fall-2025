@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 }
 
 body {
+  font-family: "Nunito Sans", sans-serif;
   color: #111517;
-  background-color: #fafafa;
+  background-color:#fafafa;
 }
 
 nav {
@@ -24,9 +26,25 @@ ul {
   justify-content: space-between;
   list-style-type: none;
   color: #111517;
-  align-items: baseline;
+  font-weight: 500;
+}
+
+.navBar {
+  align-items:center;
+}
+
+span {
+  font-weight: 300;
 }
 
 a {
   text-decoration: none;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  gap: 4rem;
 }

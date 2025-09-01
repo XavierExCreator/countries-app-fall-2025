@@ -2,7 +2,15 @@
  files that is in the data folder.
  (moved to src/components/Data/localData.js)
 */
-export default function Home() {
-    return <h1>Welcome to the Home Page</h1>;
+import CountryCard from '../components//CountryCard.jsx';
+
+export default function Home({countriesData}) {
+
+    return ( <>
+    <div className="cards">
+     {countriesData.map((country) => (
+        <CountryCard key={country.cca3} country={country}/>
+          ))}   
+          </div>
+    </>)
   }
-  

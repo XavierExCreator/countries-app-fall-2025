@@ -1,3 +1,5 @@
+//Main object is an array, everything within is an object
+
 const localData = [
   {
     name: {
