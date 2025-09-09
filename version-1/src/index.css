@@ -6,7 +6,6 @@
 }
 
 body {
-  font-family: "Nunito Sans", sans-serif;
   color: #111517;
   background-color:#fafafa;
 }
@@ -25,7 +24,6 @@ ul {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
-  color: #111517;
   font-weight: 500;
 }
 
@@ -41,10 +39,46 @@ a {
   text-decoration: none;
 }
 
+ul, a {
+  color: #111517;
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
   gap: 4rem;
+}
+body, form {
+  font-family: "Nunito Sans", sans-serif;
+}
+.submitButton {
+  background-color: #7672ce;
+}
+
+.savedCountryDiv{
+  margin-left: 3rem;
+}
+
+input {
+ border-radius: 5px;
+}
+
+textarea {
+ padding-top: 10rem;
+}
+
+input, textarea {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  min-width: 25rem;
+  max-width: 25rem;
+  color: #858585;
+}
+
+
+button, input{
+  box-shadow: 1px 1px 5px 1px rgb(52%, 52%, 52%, 20%);
+  border: transparent;
 }

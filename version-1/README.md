@@ -10,3 +10,7 @@
 -Pasted version 0 copy into COUNTRIE-APP-FALLs' folder
 -renamed version 0s' copy to version 1
 -deleted old notes for README in order to add new notes
+
+(UPDATE 2)
+-Created a form in the pages file of 'SavedCountries'
+-Added styling to the form

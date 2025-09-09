@@ -11,7 +11,7 @@ function App() {
       <nav>
         <ul className='navBar'>
           <li>
-            <Link to="/"><h1>Where in the world?</h1></Link>
+            <Link to="/"><h2 style={{marginLeft: '2rem'}}>Where in the world?</h2></Link>
           </li>
           <li>
             <Link to="/savedCountries">Saved Countries</Link>
