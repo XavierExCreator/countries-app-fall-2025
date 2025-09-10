@@ -14,3 +14,9 @@
 (UPDATE 2)
 -Created a form in the pages file of 'SavedCountries'
 -Added styling to the form
+
+(UPDATE 3)
+-Made an API fetch using useEffect in App.jsx
+-Added useParams to CountriesDetails to link CountriesDetails to countrys Route
+-Change path name of countrys and saved-countries
+-Made countrys a dynamic link

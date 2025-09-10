@@ -7,8 +7,5 @@ export default function CountryDetail() {
     console.log(countryName);
 
     return(<>
-    <main>
-    {/* <CountryCard country={countryName}/> */}
-    </main>
     </>)
 }
