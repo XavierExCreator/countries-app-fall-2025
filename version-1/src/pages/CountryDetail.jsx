@@ -1,5 +1,14 @@
 //Details of countries will be here
-export default function CountryDetail() {
+import {useParams} from 'react-router-dom';
+import CountryCard from '../components/CountryCard.jsx';
 
-    return(<><p>Country Details will be here</p></>)
+export default function CountryDetail() {
+    const countryName = useParams().countryName;
+    console.log(countryName);
+
+    return(<>
+    <main>
+    {/* <CountryCard country={countryName}/> */}
+    </main>
+    </>)
 }

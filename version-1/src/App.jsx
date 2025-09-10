@@ -2,10 +2,27 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import SavedCountries from './pages/SavedCountries';
 import CountryDetail from './pages/CountryDetail';
-import localData from '/localData.js';
+import {useState, useEffect} from 'react';
 
 function App() {
+const [countries, setCountries] = useState([]);
 
+ const fetchCountryApi = async () => {
+  try {
+    const response = await fetch(`https://restcountries.com/v3.1/all?fields=name,flags,population,capital,region,cca3,borders`
+    );
+    const data = await response.json();
+    console.log(data);
+    setCountries(data);
+  } catch (error) {
+    console.log("Error: " + error.message);
+  }
+};
+
+useEffect(() => {
+fetchCountryApi();
+}, []);
+     
   return (
     <div className='countryHeader'>
       <nav>
@@ -14,19 +31,17 @@ function App() {
             <Link to="/"><h2 style={{marginLeft: '2rem'}}>Where in the world?</h2></Link>
           </li>
           <li>
-            <Link to="/savedCountries">Saved Countries</Link>
+            <Link to="/saved-countries">Saved Countries</Link>
           </li>  
-          {/* -- This is commented out in order for the link to not show up yet since we'll work on it in BE --
-          <li>
-            <Link to="/countryDetails">Country Details</Link>
-          </li> 
-          */}
+          {/* <li>
+            <Link to={`/country/${CountryDetail.name.common}`}>Country Details</Link>
+          </li>  */}
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={ <Home countriesData={localData} />} />
-        <Route path="/savedCountries" element={<SavedCountries />} />
-        <Route path="/countryDetails" element={<CountryDetail />} />
+        <Route path="/" element={ <Home countriesData={countries} />} />
+        <Route path="/saved-countries" element={<SavedCountries countriesData={countries}/>} />
+        <Route path="/country/:countryName" element={<CountryDetail countriesData={countries}/>} />
         </Routes>
     </div>
   );
