@@ -20,3 +20,8 @@
 -Added useParams to CountriesDetails to link CountriesDetails to countrys Route
 -Change path name of countrys and saved-countries
 -Made countrys a dynamic link
+
+(UPDATE 4)
+-Experimenting to add netlify.toml to make netlify site links work for others to see my site.
+
+## (UPDATE 5)
