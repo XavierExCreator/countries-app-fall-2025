@@ -43,18 +43,12 @@ ul, a {
   color: #111517;
 }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  gap: 4rem;
-}
 body, form {
   font-family: "Nunito Sans", sans-serif;
 }
 .submitButton {
   background-color: #7672ce;
+  
 }
 
 .savedCountryDiv{
@@ -81,4 +75,9 @@ input, textarea {
 button, input{
   box-shadow: 1px 1px 5px 1px rgb(52%, 52%, 52%, 20%);
   border: transparent;
+}
+
+.backBtn {
+  margin-left: 3rem;
+  margin-bottom: 5rem;
 }

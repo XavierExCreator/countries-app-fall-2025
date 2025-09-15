@@ -1,16 +1,22 @@
 import {Link} from 'react-router-dom';
+import styles from './CountryCard.module.css';
 
-function CountryCard({country}) {
+function CountryCard({country, spotOne, spotTwo, variant}) {
 
-    const {name, population, region, capital, flags} = country;
+    //'country' is further destructured in order to place specific object structures in it's place for the 'CountryCard'
+    const {name, population, region, capital, flags} = country; 
 
+    /*
+     The return will show the  */
     return(<>
-    <Link to={`/country-detail/:${name.common}}`}>
-    <div style={{display: 'flex', flexFlow: 'column', maxWidth: '250px', boxShadow: '0px 0px 5px 1px rgb(52%, 52%, 52%, 25%)', borderRadius: '10px 10px 0px 0px'}}>
-        <img src={flags.png} alt='This is the flag of a country' style={{borderRadius: '10px 10px 0px 0px', minWidth: '250px', maxWidth: '250px', minHeight: '150px', maxHeight: '150px'}}/>
-        <div style={{marginLeft: '2rem', marginBottom: '2rem'}}>
-        <h3 style={{marginTop: '2rem'}}>{name.common}</h3>
-        <ul style={{display: 'flex', flexFlow: 'column', padding: '0'}}>
+    <Link to={`/country-detail/${name.common}`} style={{display: 'inline-block', gap: '1rem'}}>
+    {spotOne && <span >{spotOne}</span>}
+    <div className={variant === 'home' ? styles.home : styles.inspectCard}>
+        <img src={flags.png} alt='This is the flag of a country' className={styles.flag}/>
+        <div className={styles.overview}>
+        <h3 className={styles.name}>{name.common}</h3>
+        {spotTwo && <span>{spotTwo}</span>}
+        <ul className={styles.population}>
             <li>Population: <span>{population}</span></li>
             <li>Region: <span>{region}</span></li>
             <li>Capital: <span>{capital}</span></li>

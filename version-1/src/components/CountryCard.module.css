@@ -1,0 +1,85 @@
+/*
+ Styling for HomePage 
+*/
+
+.countryDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+   justify-content: flex-start;
+}
+
+.home {
+  display: flex;
+  flex-flow: column;
+  width: 250px;
+  height: 310px;
+  box-shadow: 0px 0px 5px 1px rgb(52%, 52%, 52%, 25%);
+  border-radius: 10px;
+  background-color: white;
+  justify-content: center;
+  margin: 1rem;
+  padding-bottom: 1rem;
+}
+
+.home .flag {
+  object-fit: cover;
+  align-self: flex-start;
+  border-radius: 10px 10px 0px 0px;
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 150px;
+  max-height: 150px;
+}
+
+.home .overview {
+  padding-left: 1rem;
+}
+
+.home .name {
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.home .population {
+  padding: 0;
+  color: gray;
+  display: flex;
+  flex-flow: column;
+}
+
+/*
+ Styling for CountryDetail
+*/
+
+.inspectCard {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; 
+  gap: 5rem;
+}
+
+.inspectCard .flag {
+  width: 500px;
+  border-radius: 10px;
+  margin-left: 3rem;
+}
+
+.overview {
+  align-self: flex-start ;
+}
+
+span {
+  color: gray;
+}
+
+.inspectCard .population {
+  color: #111517;
+  flex-flow: column;
+  padding: 0;
+}
+
+button {
+  padding: .25rem 1rem;
+  background-color: white;
+}

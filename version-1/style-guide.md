@@ -11,11 +11,11 @@ The designs were created to the following widths:
 
 ## Colors
 
-- Dark Blue (Text Color): `#111517` done
-- Light Gray (Background Color): `#fafafa` done
-- White (CountryCard Background Color): `#ffffff`
-- Dark Gray (Input Border Color): `#858585` made to be rgb variant
-- Purple (Submit Button Color): `#7672ce`
+- Dark Blue (Text Color): `#111517` done --
+- Light Gray (Background Color): `#fafafa` done --
+- White (CountryCard Background Color): `#ffffff` done --
+- Dark Gray (Input Border Color): `#858585` done -- made to be rgb variant
+- Purple (Submit Button Color): `#7672ce` done --
 
 ## Fonts
 
