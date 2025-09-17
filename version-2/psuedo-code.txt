@@ -57,16 +57,16 @@ Add more steps as needed!
 📊 SAVED COUNTRIES DATA
 ------------------------
 WHAT data should we store & retrieve?
-KEY: "_______"
-VALUE: _______
-VALUE DATA TYPE: _______
-EXAMPLE VALUE: _______
+KEY: "usersData"
+VALUE: formData of the user
+VALUE DATA TYPE: Object
+EXAMPLE VALUE: {Name:'Jack Skellingtin', Email:'halloween@town.spook', Country: 'Country doesn't exist', Bio:'I'm the geater than the boogy man'}
 ------------------------
 🔶 STORING SAVED COUNTRIES DATA
 ------------------------
-WHEN: _______
-WHERE: _______
-HOW:
+WHEN: Store when the form is to be reset for a new user
+WHERE: In the reset form function
+HOW: saving it from formData to userDatas' useState in
 Step 1: _______
 Step 2: _______
 Step 3: _______
