@@ -1,8 +1,11 @@
-import {useState} from 'react';
-
+import {useState} from 'react'; //Importing useState from react to use its' feature 
 
 export default function SavedCountries() {
 
+  /*
+   This useState starts as empty strings 
+   These useStates will be used in order to grab the infomation that is placed within the form that the user writesa
+  */
     const [formData, setFormData] = useState({
         usersName: '',
         email: '',
@@ -17,12 +20,23 @@ export default function SavedCountries() {
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
       };
 
+      /*
+      handleSubmit 
+      -logs the users information they placed on the console.
+      -Prevents the form from resetting automatically
+      */
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormData({ usersName: '', email: '', country: '', bio: '' });
         console.log('Users Information', formData);
       };
 
+      /*
+      -The form is in a div and the parent of the form is labeled 'savedCountryDiv' to be styled within 'index.css'
+      -This form will log the users' data to the console on handleSubmit
+      -The form is able to handleChange from what the user types and updates the information on the form
+      -The button within the form is styled using inline
+      */
     return(<>
     <div className='savedCountryDiv'>
         <h2>My saved Countries</h2>

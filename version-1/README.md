@@ -1,4 +1,4 @@
-# Countries App - Version 0
+# Countries App - Version 1
 
 ## [View Instructions Here](https://github.com/AnnieCannons/countries-app-instructions/tree/main/version-0) 📝
 
@@ -24,4 +24,9 @@
 (UPDATE 4)
 -Experimenting to add netlify.toml to make netlify site links work for others to see my site.
 
-## (UPDATE 5)
+--Lost track of updates, this is estimated updates--
+(LINKS I USED TO DISCOVER METHODS SEEN IN MY CODE)
+-Creating modules: https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/
+-Using variants: https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants
+-Formatting the numbers in the API for population in CountryCard: https://dev.to/lavary/add-commas-to-numbers-in-javascript-explained-with-examples-27k8
+-Using icons
