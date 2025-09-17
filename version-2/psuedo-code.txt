@@ -1,0 +1,102 @@
+-------------------------------------
+🧠 VERSION 2 PSEUDO-CODE WORKSHEET
+-------------------------------------
+This is our WHAT, WHEN, WHERE, HOW framework for working with data:
+1. WHAT data should we store & retrieve?
+   List the key/value pair, data type, example value.
+2. WHEN should we store & retrieve the data?
+   What event or user action is the trigger, such as clicking a button, submitting a form, or loading a page?
+3. WHERE does this happen in the code?
+   What component, page or function?
+4. HOW do we accomplish this?
+   What steps do we need to take?
+   Do we need to...
+    - render anything in JSX?
+    - make any functions? If so, when would we call those functions?
+    - use any useState or useEffect hooks?
+    - set or get an item from localStorage?
+  Remember: This is pseudo-code. Don't write code yet — just outline the actions in plain language.
+✨ YOUR TASK: Fill in the answers to each WHAT/WHEN/WHERE/HOW question below for the 3 pieces of data.
+------------------------
+📊 FORM DATA
+------------------------
+WHAT data should we store & retrieve?
+KEY: "user-info"
+VALUE: Users' Name, Email, Country, Bio
+VALUE DATA TYPE: Object w key values
+EXAMPLE VALUE: {
+    Name:"The Grinch", 
+    Email: 'HatChristmas@example.com', 
+    Bio: 'I hate christmas' 
+    Country: 'WhoVille'
+    }
+------------------------
+🔶 STORING FORM DATA
+------------------------
+WHEN: When the user clicks submit
+WHERE: SavedCountries
+HOW:
+Step 1: We create a handleSubmit function that gets the values from the form and saves it in localStorage
+Step :
+Step 2:Save users' info in an object
+Step 3: JSON.stringify(data)
+Step 4: localStorage.SetItem
+Step 5: console.log() 
+Add more steps as needed!
+------------------------
+🔶 RETRIEVING FORM DATA
+------------------------
+WHEN: When user is on their page
+WHERE: In SavedCountriesPage above the form
+HOW:
+Step 1: JSON.parse(localStorage.getItem([users' data]))
+Step 2: console.log('checking if data is there')
+Step 3: 
+Add more steps as needed!
+------------------------
+📊 SAVED COUNTRIES DATA
+------------------------
+WHAT data should we store & retrieve?
+KEY: "_______"
+VALUE: _______
+VALUE DATA TYPE: _______
+EXAMPLE VALUE: _______
+------------------------
+🔶 STORING SAVED COUNTRIES DATA
+------------------------
+WHEN: _______
+WHERE: _______
+HOW:
+Step 1: _______
+Step 2: _______
+Step 3: _______
+Add more steps as needed!
+------------------------
+🔶 RETRIEVING SAVED COUNTRIES DATA
+------------------------
+WHEN: _______
+WHERE: _______
+HOW:
+Step 1: _______
+Step 2: _______
+Step 3: _______
+Add more steps as needed!
+------------------------
+📊 COUNTRY COUNTS DATA
+------------------------
+WHAT data should we store & retrieve?
+KEY: "_______"
+VALUE: _______
+VALUE DATA TYPE: _______
+EXAMPLE VALUE: _______
+------------------------
+🔶 STORING & RETRIEVING COUNTRY COUNTS DATA
+------------------------
+NOTE: We combine storing & retrieving country counts data into one section because they always happen together. Each time we look up a country’s view count, we also need to increase it and save the new total.
+WHEN: _______
+WHERE: _______
+HOW:
+Step 1: _______
+Step 2: _______
+Step 3: _______
+Add more steps as needed!
