@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'; //Importing useState and useEffect from react to use its' feature 
-
+import CountryCard from '../components/CountryCard.jsx';
 
 export default function SavedCountries() {
   /*
@@ -83,6 +83,7 @@ export default function SavedCountries() {
 
         {//The flags that were saved in CountryDetail go here
         }
+        {/* {<CountryCard country={localStorage.getItem('savedCountries')}/>} */}
 
     <legend><h2>My Profile</h2>
     <form className='userForm' onSubmit={handleSubmit}>

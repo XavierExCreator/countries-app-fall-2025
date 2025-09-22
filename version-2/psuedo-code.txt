@@ -87,18 +87,20 @@ Add more steps as needed!
 📊 COUNTRY COUNTS DATA
 ------------------------
 WHAT data should we store & retrieve?
-KEY: "_______"
-VALUE: _______
-VALUE DATA TYPE: _______
-EXAMPLE VALUE: _______
+KEY: country's name
+VALUE: countries view count as a number
+VALUE DATA TYPE: a number
+EXAMPLE VALUE: 6
 ------------------------
 🔶 STORING & RETRIEVING COUNTRY COUNTS DATA
 ------------------------
 NOTE: We combine storing & retrieving country counts data into one section because they always happen together. Each time we look up a country’s view count, we also need to increase it and save the new total.
-WHEN: _______
-WHERE: _______
+
+WHEN: When the user clicks on the country
+WHERE:in the countries Detail page
 HOW:
-Step 1: _______
-Step 2: _______
-Step 3: _______
+Step 1: useState for viewCount
+Step 2: useEffect to; collect current viewCount, add one, store the new number in local Storage
+Step 3: Update the value of the viewCount with setViewCount
+Step 4: show the viewCount variable to the user on the webpage
 Add more steps as needed!

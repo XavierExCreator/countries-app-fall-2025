@@ -23,13 +23,14 @@ export default function CountryDetail({countriesData}) {
    -localStorage will save this variable with the new value inside using the key 'savedCountries'
   */
   function handleSave() {
-    if (savedCountriesData.some(country => country === foundCountryMatch)) {
+    if (savedCountriesData.some(country => country.name.common === foundCountryMatch.name.common)) {
       alert("This country has already been");
     } else {
      let newArray = [...savedCountriesData, foundCountryMatch];
      setSavedCountriesData(newArray);
      let stringifiedCountry = JSON.stringify(newArray);
      localStorage.setItem('savedCountries', stringifiedCountry);
+     console.log(savedCountriesData.includes(foundCountryMatch));
     }
   }
 
@@ -74,7 +75,7 @@ export default function CountryDetail({countriesData}) {
       {countriesData.length > 0 
       ? (foundCountryMatch 
           ? <div>
-            <CountryCard country={foundCountryMatch} variant='inspectCard' spotOne={<Button text='← Back' className='backBtn' />} spotTwo={<Button text='Save' className='saveBtn' onClick={handleSave}/>}
+            <CountryCard country={foundCountryMatch} variant='inspectCard' spotOne={<Button text='← Back' className='backBtn' />} spotTwo={<Button text={handleSave? 'Saved' : 'Save'} className='saveBtn' onClick={handleSave}/>}
             spotThree={<li>Viewed: <span> times</span></li>}/>
             </div>
           : <p>Loading chosen country in progress...</p>
