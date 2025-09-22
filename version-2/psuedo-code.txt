@@ -57,29 +57,31 @@ Add more steps as needed!
 📊 SAVED COUNTRIES DATA
 ------------------------
 WHAT data should we store & retrieve?
-KEY: "usersData"
-VALUE: formData of the user
-VALUE DATA TYPE: Object
-EXAMPLE VALUE: {Name:'Jack Skellingtin', Email:'halloween@town.spook', Country: 'Country doesn't exist', Bio:'I'm the geater than the boogy man'}
+KEY: "savedCountries"
+VALUE: countryCard names saved in an array
+VALUE DATA TYPE: Array
+EXAMPLE VALUE: [Australia, US]
 ------------------------
 🔶 STORING SAVED COUNTRIES DATA
 ------------------------
-WHEN: Store when the form is to be reset for a new user
-WHERE: In the reset form function
-HOW: saving it from formData to userDatas' useState in
-Step 1: _______
-Step 2: _______
-Step 3: _______
-Add more steps as needed!
+WHEN: when the user clicks on the save button
+WHERE: On the CountryDetail page when the user clicks the 'save' button
+HOW: 
+Step 1: We need to attach an onClick handler to the Save button on the CountryDetail page
+Step 2: When the user clicks on the Save button, call the handleClick function
+Step 3: The handleClick function needs to save the country's name in localStorage
+Step 4: The handleClick function will first get the array of saved countries from local Storage. 
+If the country is already saved, then there is no need to save the country. If the country is not saved yet, then add the country's name to the array of savedCountries and store that value in localStorage.
 ------------------------
 🔶 RETRIEVING SAVED COUNTRIES DATA
 ------------------------
-WHEN: _______
-WHERE: _______
+WHEN: on the load for the SavedCountries page
+WHERE: On the savedCountries pagein the saved section
 HOW:
-Step 1: _______
-Step 2: _______
-Step 3: _______
+Step 1:mAKE A UuseEffect that runs on page load. it will...
+Step 2: get he array of SavedCountries from localStorage
+Step 3: Store it in the useState variable
+Step 4: Show to the user by looping(mapping over the array to make a new one)
 Add more steps as needed!
 ------------------------
 📊 COUNTRY COUNTS DATA

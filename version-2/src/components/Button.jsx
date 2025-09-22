@@ -4,10 +4,10 @@
  -The inside of the button will have a destructured placeholder labeled {text}
  -This is a reusable button 
 */
-function Button({text, className}) {
+function Button({text, className, onClick}) {
 
     return(<>
-    <button type='submit' className={className}>{text}</button>
+    <button type='submit' className={className} onClick={onClick}>{text}</button>
     </>)
 }
 

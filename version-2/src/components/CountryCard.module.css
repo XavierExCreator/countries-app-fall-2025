@@ -49,6 +49,9 @@
   flex-direction: row;
   align-items: flex-start; 
   gap: 5rem;
+  cursor:default;
+  position: relative;
+  margin-top: 5rem;
 }
 
 .inspectCard .flag {
@@ -76,6 +79,7 @@ button {
   padding: .25rem 1rem;
   background-color: white;
   text-align: center;
+  cursor: pointer;
 }
 
 @media (max-width: 691px) {
@@ -83,7 +87,8 @@ button {
    flex-direction: column;
    margin: auto;
    width: 50%;
-   gap: 3rem 0rem;
+   gap: 3rem;
+   margin: 5rem 3rem;
   }
 
   .inspectCard .flag {

@@ -48,7 +48,9 @@ body, form {
 }
 .submitButton {
   background-color: #7672ce;
-  
+  color: white;
+  padding: .5rem 1.5rem;
+  border-radius: 3px;
 }
 
 .savedCountryDiv{
@@ -78,6 +80,6 @@ button, input{
 }
 
 .backBtn {
+  position: absolute;
   margin-left: 3rem;
-  margin-bottom: 5rem;
 }
