@@ -8,4 +8,6 @@
 -Creating modules: https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/
 -Using variants: https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants
 -Formatting the numbers in the API for population in CountryCard: https://dev.to/lavary/add-commas-to-numbers-in-javascript-explained-with-examples-27k8
--Using icons
+-Using '.some' https://www.w3schools.com/jsref/jsref_some.asp
+
+-

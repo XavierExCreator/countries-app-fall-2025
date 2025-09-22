@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'; //Importing useState and useEffectfrom react to use its' feature 
+import {useState, useEffect} from 'react'; //Importing useState and useEffect from react to use its' feature 
 
 
 export default function SavedCountries() {

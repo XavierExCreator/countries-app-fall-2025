@@ -15,21 +15,21 @@ export default function CountryDetail({countriesData}) {
 
   /*
    This handleSave function will:
-   -Declare a variable that creates a new array with the previously made empty useState array with the corresponding object that the user is inspecting on the web when the save button is clicked
-   -The 'newArray' will be passed into the useState function 'setSavedCountriesData
-   -The delcared variable 'stringifiedCountry' will reconstruct the array object into a string for localStorage to save it
-   -Once it's stringified, we'll store the 'stringifiedCountry' to localStorage with its' key 'savedCountries'
-   -The console will log to the console that the arrays' been updated
+   -Check if savedCountriesData has a flag that the user is trying to save by using .some
+   -If it does, the user will be alerted 'This country has already been saved'
+   -Else, Declare a variable 'newArray' that will update savedCountriesData and place this countries data inside the array as an object using the .find method above
+   -It will than pass the newArray into setSavedCountriesData
+   -Another variable will be declared 'stringifiedCountry' and the newArray will be stringified inside that variable
+   -localStorage will save this variable with the new value inside using the key 'savedCountries'
   */
   function handleSave() {
-    if (savedCountriesData !== foundCountryMatch) { 
-    let newArray = [...savedCountriesData, foundCountryMatch];
-    setSavedCountriesData(newArray);
-    let stringifiedCountry = JSON.stringify(newArray);
-   localStorage.setItem('savedCountries', stringifiedCountry);
-  //  console.log('This is the updated array', newArray);
+    if (savedCountriesData.some(country => country === foundCountryMatch)) {
+      alert("This country has already been");
     } else {
-      alert("This country has already been")
+     let newArray = [...savedCountriesData, foundCountryMatch];
+     setSavedCountriesData(newArray);
+     let stringifiedCountry = JSON.stringify(newArray);
+     localStorage.setItem('savedCountries', stringifiedCountry);
     }
   }
 
@@ -64,8 +64,6 @@ export default function CountryDetail({countriesData}) {
         return country.name.common.toLowerCase() === countryName.toLowerCase();
     };
 
-    console.log('this is the found items', foundCountryMatch);
-    console.log('this is localStorage', savedCountriesData);
     /*
      -The ternary statement checks to make sure the countriesData starts at the lenght of 0 (while it checks for the length it'll say 'Locating API Data')
      -Than it checks and sees if a match has been found for the clickedCountry (EX: -user clicks Britain- -clickedCountry function returns the matching countrys' name- -inside main the ternarys do their job than the card components show up- (if the CountryCard doesn't show up than 'Loading chosen country in progress' will appear)
