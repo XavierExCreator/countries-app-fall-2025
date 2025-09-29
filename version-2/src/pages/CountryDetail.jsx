@@ -26,11 +26,15 @@ export default function CountryDetail({countriesData}) {
   foundCountryMatch needs to look through countriesData to find the clicked country 
   */
   const foundCountryMatch = countriesData.find(clickedCountry);
-  
+ 
       /*
-    This runs when a country is clicked and passes a param labeled country through the API. This will return */
+       clickedCountry:
+       - 
+      */
     function clickedCountry(country) {
-      return country.name.common.toLowerCase() === countryName.toLowerCase();
+      const variable = country.name.common.toLowerCase().split("-").join(" ") === countryName.toLowerCase().split("-").join(" ");
+      console.log('split and joining', variable);
+      return variable;
   };
 
   /*
@@ -58,6 +62,13 @@ export default function CountryDetail({countriesData}) {
     }
   }
 
+  /*
+   storeCountry:
+   -sees if localStorage is there grab 'savedCountries'
+   -destrigify the stored object(s) in there using parse
+   -Pass the new destringified information through the setSavedCountriesData
+   -If this fails, say that localStorage couldn't find any saved data
+  */
   function storeCountry() {
     if(localStorage.getItem('savedCountries')) {
       let destringifiedCountry = JSON.parse(localStorage.getItem('savedCountries'));
@@ -65,7 +76,6 @@ export default function CountryDetail({countriesData}) {
     }
     else { console.log("localStorage couldn't find any saved data") }
   }
-  
     
   // function storeAndUpdateCount() {
   //   setCount((count) => {let newCount = count + 1; 
@@ -74,21 +84,18 @@ export default function CountryDetail({countriesData}) {
   //     let newViewCount = JSON.parse(localStorage.getItem(`countryName`));
   //     console.log(newViewCount);
   //   })
-  // }
-
-
-    const isSaved = savedCountriesData.some(
-      country => country.name.common === foundCountryMatch.name.common
-    );
-
-    /*
-   useEffect states:
-   -if there's localStorage, grab 'savedCountries'
-   -if 'savedCountries' is grabbed, declare a variable that will destructure the previous stringified 'savedCountries'
-   -Than pass the destringifiedCountry into the function 'setSavedCountriesData
-   -if localStorage/doesn't have 'savedCountries' within it, log a console error
-   -Make sure this useEffect happens once everytime the page loads
+  // };
+ 
+  /*
+   isSaved will check whether foundCountryMatch is defined or not
+   - If it's defined it's check with .some
+   - If it's not it comes off as 'false'
   */
+    let isSaved = foundCountryMatch ? 
+     savedCountriesData.some(saved => saved.name.common === foundCountryMatch.name.common) 
+    : false;
+
+    // On load it runs storeCountry
   useEffect(() => {
     // storeAndUpdateCount();
     storeCountry();

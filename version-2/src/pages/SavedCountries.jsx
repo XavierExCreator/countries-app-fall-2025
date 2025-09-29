@@ -54,6 +54,13 @@ export default function SavedCountries() {
         setFormData(emptyFormState);
       };
 
+      function getUser() {
+        if (localStorage.getItem('profile')) {
+          let profileDeStringified = JSON.parse(localStorage.getItem('profile'));
+          setUserInfo(profileDeStringified);
+        }
+      }
+
       /*
        -useEffect says:
        -If there's a localStorage, check for 'profile' and grab it
@@ -62,10 +69,7 @@ export default function SavedCountries() {
        -Make sure this only runs once on load
       */
       useEffect(() => {
-        if (localStorage.getItem('profile')) {
-          let profileDeStringified = JSON.parse(localStorage.getItem('profile'));
-          setUserInfo(profileDeStringified);
-        }
+        getUser();
       }, []);
 
       /*
