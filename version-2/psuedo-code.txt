@@ -78,7 +78,7 @@ If the country is already saved, then there is no need to save the country. If t
 WHEN: on the load for the SavedCountries page
 WHERE: On the savedCountries pagein the saved section
 HOW:
-Step 1:mAKE A UuseEffect that runs on page load. it will...
+Step 1:Make A useEffect that runs on page load. it will...
 Step 2: get he array of SavedCountries from localStorage
 Step 3: Store it in the useState variable
 Step 4: Show to the user by looping(mapping over the array to make a new one)

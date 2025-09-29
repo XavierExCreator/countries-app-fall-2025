@@ -19,6 +19,19 @@ export default function SavedCountries() {
     const [userInfo, setUserInfo] = useState(null);
 
     /*
+     Saves countries when clicked suing the save button and passes it through the useSates function to use for mapping below in the return
+     */
+    const [userSavedCountry, setUserSavedCountry] = useState([]);
+
+    useEffect(() => {
+      if(localStorage.getItem('savedCountries')) {
+        let destringifiedCountry = JSON.parse(localStorage.getItem('savedCountries'));
+        setUserSavedCountry(destringifiedCountry);
+      }
+      else { console.log("localStorage couldn't find any saved data") }
+    }, []);
+
+    /*
      -'handleChange' targets the name of the inputs in the form below
      -It targets name and value in order to update the information on the form
      -setFormData looks at the previous responses written by the user before submitting the form and changes it to the current value
@@ -28,10 +41,6 @@ export default function SavedCountries() {
       const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-
-        let stringified = JSON.stringify(formData);
-
-        localStorage.setItem('profile', stringified);
       };
    
       /*
@@ -40,7 +49,9 @@ export default function SavedCountries() {
       */
     const handleSubmit = (e) => {
         e.preventDefault();
-        setFormData({ usersName: '', email: '', country: '', bio: '' });
+        let stringified = JSON.stringify(formData);
+        localStorage.setItem('profile', stringified);
+        setFormData(emptyFormState);
       };
 
       /*
@@ -81,10 +92,13 @@ export default function SavedCountries() {
         <h2>My saved Countries</h2>
         {userInfo && <h2>Welcome back, {userInfo.usersName}!</h2>}
 
-        {//The flags that were saved in CountryDetail go here
-        }
-        {/* {<CountryCard country={localStorage.getItem('savedCountries')}/>} */}
-
+        {/* Added length to userSavedCountry in order to make sure it starts at 0. It than  maps over what is in userSavedCountry with map, passes a param and loops through using the country that's in there and it's corresponding key, if there's no countries in there, than it says 'No countries saved' */}
+        {userSavedCountry.length > 0
+        ? <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>{userSavedCountry.map((country) => (<CountryCard country={country} key={country.cca3} variant='savedCountries'/>))}</div> 
+        : <p>No countries saved</p>}
+       
+       
+        
     <legend><h2>My Profile</h2>
     <form className='userForm' onSubmit={handleSubmit}>
         <label htmlFor='usersName'><input id='usersName' name='usersName' type='text' placeholder='Full Name' value={formData.usersName} onChange={handleChange}/></label><br/>
