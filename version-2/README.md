@@ -10,4 +10,4 @@
 -Formatting the numbers in the API for population in CountryCard: https://dev.to/lavary/add-commas-to-numbers-in-javascript-explained-with-examples-27k8
 -Using '.some' https://www.w3schools.com/jsref/jsref_some.asp
 
--
+-Parsing a number: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
