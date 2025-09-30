@@ -54,7 +54,7 @@ WHEN: **On submitting the Form**
 WHERE: **in the handleSubmit function, in the SavedCountries.jsx file**
 
 HOW:
-Step 1: **\_\_\_**
+Step 1: Declare a new function called storeUserData() which should send a POST request to the API to the add-one-user endpoint
 Step 2: **\_\_\_**
 Step 3: **\_\_\_**
 Add more steps as needed!
@@ -67,8 +67,8 @@ WHAT...
 TYPE OF HTTP REQUEST (GET OR POST): **GET**
 API ENDPOINT: **/get-newest-user**
 
-REQUEST BODY DATA TYPE (if applicable): **string**
-REQUEST BODY (if applicable): **GET https://backend-answer-keys.onrender.com/get-newest-user**
+REQUEST BODY DATA TYPE (if applicable): **N/A**
+REQUEST BODY (if applicable): **N/A**
 
 RESPONSE DATA TYPE: **array object**
 RESPONSE: **[
@@ -86,9 +86,10 @@ WHEN: **When user loads back on SavedCountries**
 WHERE: **in useEffect? At the top of the page?**
 
 HOW:
-Step 1: **\_\_\_**
-Step 2: **\_\_\_**
-Step 3: **\_\_\_**
+Step 1: Make a function called ‘getNewestUser()’ that will get the form data from the API by sending a GET request to the /get-newest-user.endpoint
+Step 2: Save the form data in a state variable using useState()
+Step 3: Call the getNewestUser() on page load in the useEffect()
+Step 4: Conditionally render the user’s name in the return statement in (JSX) if the user’s name exists
 Add more steps as needed!
 
 ---
