@@ -101,25 +101,30 @@ Add more steps as needed!
 ## 🔶 STORING SAVED COUNTRIES DATA
 
 WHAT...
-TYPE OF HTTP REQUEST (GET OR POST): **POST**
-API ENDPOINT: **/save-one-country_**
+TYPE OF HTTP REQUEST (GET OR POST): POST
+API ENDPOINT: /save-one-country
 
-REQUEST BODY DATA TYPE (if applicable): **Object**
-REQUEST BODY (if applicable): **{
+REQUEST BODY DATA TYPE (if applicable): Object
+REQUEST BODY (if applicable): {
   "country_name": "Brazil"
-}**
+}
 
 RESPONSE DATA TYPE: **string**
-RESPONSE: **Success! The country is saved.**
+RESPONSE: Success! The country is saved
 
-WHEN: **When the user clicks the save button in CountryDetails page**
+WHEN: When the user clicks the save button in CountryDetails page
 
-WHERE: **in the handleSave function in the CountryDetails page. The save button is in the CountryCard**
+WHERE: In the handleSave function in the CountryDetails page. The save button is in the CountryCard
 
 HOW:
-Step 1: **\_\_\_**
-Step 2: **\_\_\_**
-Step 3: **\_\_\_**
+Step 1: **Declare a function called handleSave**
+Step 2: handleSave will check if savedCountriesData has been saved.
+Step 3: If savedCountriesData isn't saved already, it'll run saveCountriesToAPI function
+Step 4: That function will have an 'await' feature with the api in it for the saved countries with an endpoint like '/save-one-country'
+Step 5:The method will be POST
+Step 6: The headers are "'Content-Type': 'application/json',"
+Step 7: The body will be stringified to store it properly EX: (body: JSON.stringify({"country_name": countryName}))
+Step 8: IF the country has been SAVED initially it will alrt the user that the country has already been saved
 Add more steps as needed!
 
 ---
@@ -130,8 +135,8 @@ WHAT...
 TYPE OF HTTP REQUEST (GET OR POST): **GET**
 API ENDPOINT: **/get-all-saved-countries**
 
-REQUEST BODY DATA TYPE (if applicable): **string?**
-REQUEST BODY (if applicable): **GET https://backend-answer-keys.onrender.com/get-all-saved-countries**
+REQUEST BODY DATA TYPE (if applicable): **N/A**
+REQUEST BODY (if applicable): **N/A**
 
 RESPONSE DATA TYPE: **array objects**
 RESPONSE: **[
@@ -177,9 +182,9 @@ RESPONSE: **{
   "count": 3
 }**
 
-WHEN: **When the user views goes to check and view CountryDetails?**
+WHEN: **When the user goes to check and view CountryDetails in useEffect**
 
-WHERE: **In CountryCard when it's on SavedCountries.jsx file?**
+WHERE: **In the country's detail page**
 
 HOW:
 Step 1: **\_\_\_**

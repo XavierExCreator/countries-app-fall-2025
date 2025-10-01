@@ -49,26 +49,38 @@ export default function CountryDetail({countriesData}) {
    -Another variable will be declared 'stringifiedCountry' and the newArray will be stringified inside that variable
    -localStorage will save this variable with the new value inside using the key 'savedCountries'
   */
-  function handleSave() {
-    if (savedCountriesData.some(country => country.name.common === foundCountryMatch.name.common)) {
-      alert("This country has already been");
-    } else {
-     let newArray = [...savedCountriesData, foundCountryMatch];
-     setSavedCountriesData(newArray);
-     let stringifiedCountry = JSON.stringify(newArray);
-     localStorage.setItem('savedCountries', stringifiedCountry);
-     
-     setIsReacting(true);
-      setTimeout(() => {
-        setIsReacting(false);
-      }, 5000);
-    }
-  }
 
+
+   function handleSave() {
+    if (!savedCountriesData) {
+      saveCountriesToAPI();
+    } else {
+      alert("This country has already been saved");
+    }
+  
+    setIsReacting(true);
+    setTimeout(() => {
+      setIsReacting(false);
+    }, 5000);
+  }
+  
+    async function saveCountriesToAPI() {
+      await fetch(`https://backend-answer-keys.onrender.com/${countryName}/save-one-country`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "country_name": countryName
+        })
+      })
+    }
+
+    
     /*
    storeCountry:
    -sees if localStorage is there grab 'savedCountries'
-   -destrigify the stored object(s) in there using parse
+   -Parse the stored object(s) in there using parse
    -Pass the new destringified information through the setSavedCountriesData
    -If this fails, say that localStorage couldn't find any saved data
   */
@@ -95,6 +107,7 @@ export default function CountryDetail({countriesData}) {
     - Parse the integer
     - Return the new count
   */
+
   const storeAndUpdateCount = ()  => {
     if (localStorage.getItem(`${countryName}`)) { 
       let grabbedLocalStorage = parseInt(localStorage.getItem(`${countryName}`), 10); 
@@ -111,8 +124,8 @@ export default function CountryDetail({countriesData}) {
       let grabbedLocalStorage = localStorage.getItem(`${countryName}`) 
       parseInt(grabbedLocalStorage, 10); 
       return newCount;
-    }) }
-  };
+    }) 
+   }}
  
   /*
    isSaved will check whether foundCountryMatch is defined or not
