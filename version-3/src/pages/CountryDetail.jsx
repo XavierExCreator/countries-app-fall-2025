@@ -42,17 +42,10 @@ export default function CountryDetail({countriesData}) {
   
   /*
    This handleSave function will:
-   -Check if savedCountriesData has a flag that the user is trying to save by using .some
-   -If it does, the user will be alerted 'This country has already been saved'
-   -Else, Declare a variable 'newArray' that will update savedCountriesData and place this countries data inside the array as an object using the .find method above
-   -It will than pass the newArray into setSavedCountriesData
-   -Another variable will be declared 'stringifiedCountry' and the newArray will be stringified inside that variable
-   -localStorage will save this variable with the new value inside using the key 'savedCountries'
+
   */
-
-
    function handleSave() {
-    if (!savedCountriesData.some(c => c.name.common === foundCountryMatch.name.common)) {
+    if (!savedCountriesData.some(country => country.name.common === foundCountryMatch.name.common)) {
       saveCountriesToAPI();
     } else {
       alert("This country has already been saved");
@@ -79,29 +72,26 @@ export default function CountryDetail({countriesData}) {
     
     /*
    storeCountry:
-   -sees if localStorage is there grab 'savedCountries'
-   -Parse the stored object(s) in there using parse
-   -Pass the new destringified information through the setSavedCountriesData
-   -If this fails, say that localStorage couldn't find any saved data
+   NEEDS TO BE COMPLETED
   */
    const storeCountry = () => {
    
   };
 
   /*
-  - Checking if localStorage has countryName
-    - Parsing the integer
-    - Updating the number + 1
-    - Setting new value to localStorage
-    - Grabbing to show user
-    - Parsing the new integer
-    - Passing the information to be updated to setCount
-  - If localStorage doesnt have a value in it for the countries do this...
-    - 'newCount' will add the previous value of 0 by + 1
-    - Set the newCount to localStorage
-    - Grab the localStorage
-    - Parse the integer
-    - Return the new count
+  storeAndUpdateCount uses an async arrow function to:
+  -Try:
+     - To declare response than have it await for the api fetch call
+     - At the end-point of the fetch have '/update-one-country-count'
+     - Have three objects inside that declare what metadata it needs/what we're looking for
+     - method needs: 'POST'
+     - headers need 'Content-Type' to be 'application/json'
+     - The body will be stringified and have a key pair of 'country_name' and countryName
+     - it'll than declare data and await the response of json
+     - We than pass data.count into setCount to pass the new information through it
+  -Catch an error if this doesn't run than:
+     - pass 'err' to signfy that there's been an error
+     - the console will log an error and say 'Error updating counter
   */
 
   const storeAndUpdateCount = async ()  => {
@@ -135,12 +125,27 @@ export default function CountryDetail({countriesData}) {
      savedCountriesData.some(saved => saved.name.common === foundCountryMatch.name.common) 
     : false;
 
-    // On load it runs storeCountry
+    // On load it runs storeCountry and storeAndUpdateCount
   useEffect(() => {
     storeAndUpdateCount();
     storeCountry();
   },[]);
 
+
+  /*
+   The return:
+   - Will check that the length for CountriesData starts at 0 before showing the user anything else
+     -When the length starts at 0 it'll than check if foundCountryMatch has data inside
+      -If it found information in foundCountryMatch it'll than:
+        - Show CountryCard and place the foundCountryMatch inside the 'country' prop
+        - Display the variant as 'inspectCard'(for CSS)
+        - Fill in SpotOne prop with a Back Button
+        - Make className animated through CSS to show the user visuals that they're svaing a button when it's clicked
+        - onClick will active the handleSave function
+        -Fill in spot three with the times the flag has been viewed using the count useState delcared and posted earlier in the code
+    - If foundCountryMatch hasn't loaded yet it'll say 'Loading chosen country in progress...' to the user until it does
+   -If it hasn't found it yet, it'll say Locating API Data to the user
+  */
     return(<>
     <main>
       {countriesData.length > 0 
