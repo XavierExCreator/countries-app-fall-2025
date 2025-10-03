@@ -52,7 +52,7 @@ export default function CountryDetail({countriesData}) {
 
 
    function handleSave() {
-    if (!savedCountriesData) {
+    if (!savedCountriesData.some(c => c.name.common === foundCountryMatch.name.common)) {
       saveCountriesToAPI();
     } else {
       alert("This country has already been saved");
@@ -65,7 +65,7 @@ export default function CountryDetail({countriesData}) {
   }
   
     async function saveCountriesToAPI() {
-      await fetch(`https://backend-answer-keys.onrender.com/${countryName}/save-one-country`, {
+      await fetch(`https://backend-answer-keys.onrender.com/save-one-country`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,11 +85,7 @@ export default function CountryDetail({countriesData}) {
    -If this fails, say that localStorage couldn't find any saved data
   */
    const storeCountry = () => {
-    if(localStorage.getItem('savedCountries')) {
-      let destringifiedCountry = JSON.parse(localStorage.getItem('savedCountries'));
-      setSavedCountriesData(destringifiedCountry);
-    }
-    else { console.log("localStorage couldn't find any saved data") }
+   
   };
 
   /*
@@ -108,24 +104,27 @@ export default function CountryDetail({countriesData}) {
     - Return the new count
   */
 
-  const storeAndUpdateCount = ()  => {
-    if (localStorage.getItem(`${countryName}`)) { 
-      let grabbedLocalStorage = parseInt(localStorage.getItem(`${countryName}`), 10); 
-      const updatedCount = grabbedLocalStorage + 1;
-      localStorage.setItem(`${countryName}`, updatedCount); 
-      const showingUser = localStorage.getItem(`${countryName}`); 
-      parseInt(showingUser, 10); 
-      return setCount(showingUser);
-    }
-    else { 
-    setCount((prev) => { 
-      const newCount = prev + 1;  
-      localStorage.setItem(`${countryName}`, newCount); 
-      let grabbedLocalStorage = localStorage.getItem(`${countryName}`) 
-      parseInt(grabbedLocalStorage, 10); 
-      return newCount;
-    }) 
-   }}
+  const storeAndUpdateCount = async ()  => {
+   try { 
+    const response = await fetch (`https://backend-answer-keys.onrender.com/update-one-country-count`, {
+      
+      method: 'POST', 
+      
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify({
+        "country_name": countryName
+      })
+    })
+    const data = await response.json();
+    setCount(data.count);
+  console.log("Updated counter:", data.count);
+   } catch (err) {
+    console.error("Error updating counter:", err);
+  }
+};
  
   /*
    isSaved will check whether foundCountryMatch is defined or not

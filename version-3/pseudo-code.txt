@@ -124,7 +124,7 @@ Step 4: That function will have an 'await' feature with the api in it for the sa
 Step 5:The method will be POST
 Step 6: The headers are "'Content-Type': 'application/json',"
 Step 7: The body will be stringified to store it properly EX: (body: JSON.stringify({"country_name": countryName}))
-Step 8: IF the country has been SAVED initially it will alrt the user that the country has already been saved
+Step 8: IF the country has been SAVED initially it will alert the user that the country has already been saved
 Add more steps as needed!
 
 ---
@@ -187,7 +187,10 @@ WHEN: **When the user goes to check and view CountryDetails in useEffect**
 WHERE: **In the country's detail page**
 
 HOW:
-Step 1: **\_\_\_**
-Step 2: **\_\_\_**
-Step 3: **\_\_\_**
+Step 1: Delcare an async function 'storeAndUpdate'
+Step 2: The next line has an await fetch call for the api with the a dynamic country feature and '/update-one-country-count' as th endpoint
+Step 3: declare the method, which is POST
+Step 4: What will be used for the metadata
+Step 5: Wht the body needs
+Step 6: 
 Add more steps as needed!
