@@ -1,7 +1,10 @@
 import {useState, useEffect} from 'react'; //Importing useState and useEffect from react to use its' feature 
 import CountryCard from '../components/CountryCard.jsx';
 
-export default function SavedCountries() {
+/*
+Destructuring countriesData in order to use later with the REST API for saved countries
+*/
+export default function SavedCountries({countriesData}) {
   /*
    This variable will be used to have an organized look in the useState
   */
@@ -23,6 +26,30 @@ export default function SavedCountries() {
      */
      const [userSavedCountry, setUserSavedCountry] = useState([]);
 
+
+     /*
+       showSavedCountries is an async arrow function that:
+       -tries to get a fetch call from the REST api using GET
+        it will:
+         -Delcare a variable called data and await a reponse
+         -pass the data through setUserSavedCountry
+       -Catch if there's an error and log that an error has occurred
+     */
+     const showSavedCountries = async () => {
+      try {const response = await fetch (`https://backend-answer-keys.onrender.com/get-all-saved-countries`, {
+      
+        method: 'GET', 
+        
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      const data = await response.json();
+       setUserSavedCountry(data);
+     } catch (err) {
+      console.error("Error showing saved countries to user", err);
+    }
+  };
 
     /*
      -'handleChange' targets the name of the inputs in the form below
@@ -81,7 +108,7 @@ export default function SavedCountries() {
 
 
       /*
-       get user will:
+       getUser will:
        - Asynchronously make an api call
        -Get a response and wait for the api to run
        -Get data and wait for the json
@@ -100,12 +127,16 @@ export default function SavedCountries() {
         });
       }
       /*
-       -useEffect will run getUser
+       useEffect will:
+         -Run getUser
+         -Run showSavedCountries
       */
       useEffect(() => {
+        showSavedCountries();
         getUser();
       }, []);
 
+      //This is for lines 158 to 160 & 189 to 194
       /*
       -The form is in a div and the parent of the form is labeled 'savedCountryDiv' to be styled within 'index.css'
       -There's a header2 that states 'My saved Countries'
@@ -114,26 +145,47 @@ export default function SavedCountries() {
       -The form is able to handleChange from what the user types and updates the information on the form
       -The button within the form is styled using inline
       */
+     //This is for the ternary between lines: 162 & 179
+      /*
+           Added a ternary statement that does several things for this to work.
+           -Checks if there's a value in userSavedCountry and makes it start at 0 for the length
+             Once those two thigs are true it will:
+             -map userSavedCountry
+             -Have a placeholder of 'savedCountry'
+             -Declare a variable named 'matchedCountry'
+              Matched country will:
+               -Use the destructured 'countriesData' above to find the country and match country.name.common countries flag API to the REST api that has saved the countries the user has clicked save on
+            -We than return matchedCountry
+              -If matchedCountry is returned we fill in the component CountryCard and
+                -give it a key of the new REST api
+                -match the country information with the 'matchCountry' so the countries flag api can fill in the information in it's proper places
+                -Declare the variant so the card is decorated the same way as Home.jsx is
+            -If matchedCountry is not returned than we tell the ternary to that it becomes null, that there's no value.  
+           -If not it'll say no countries have been saved
+         */
     return(<>
     <div className='savedCountryDiv'>
         <h2>My saved Countries</h2>
         {userInfo && <h2>Welcome back, {userInfo.usersName}!</h2>}
-
-        {/* 
-         Added length to userSavedCountry in order to make sure it starts at 0. It than  maps over what is in userSavedCountry with map, passes a param and loops through using the country that's in there and it's corresponding key, if there's no countries in there, than it says 'No countries saved'
-         */
-
-        /*
-         NEW THINGS TO DO:
-         -Check the api of the flags and see what the key is if any
-         -Change necessary information for CountryCards
-         -RIGHT NOW flags are saved with localStorage, make sure to attempt to save the country flags with the api 
-         */}
-
-        {userSavedCountry.length > 0
-        ? <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>{userSavedCountry.map((country) => (<CountryCard country={country} key={country.cca3} variant='savedCountries'/>))}</div> 
-        : <p>No countries saved</p>}
          
+         {userSavedCountry && userSavedCountry.length > 0 ? (
+          userSavedCountry.map((savedCountry) => {
+            const matchedCountry = countriesData.find(
+              (country) =>
+                country.name.common.toLowerCase() === savedCountry.country_name.toLowerCase()
+            );
+
+            return matchedCountry ? (
+              <CountryCard 
+              key={savedCountry.country_name}
+              country={matchedCountry}
+              variant="savedCountries"
+              />
+            ) : null
+          })
+        ) : (
+          <p>No countries are saved</p>
+         )}
 
     <legend><h2>My Profile</h2>
     <form className='userForm' onSubmit={handleSubmit}>

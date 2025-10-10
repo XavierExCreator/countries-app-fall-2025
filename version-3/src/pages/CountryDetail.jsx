@@ -19,7 +19,9 @@ export default function CountryDetail({countriesData}) {
 
   const [count, setCount] = useState(0)
   
-  //useParams needs to seek the countries names
+  /*
+   useParams needs to seek the countries names
+  */
   const countryName = useParams().countryName;
 
   /*
@@ -42,7 +44,9 @@ export default function CountryDetail({countriesData}) {
   
   /*
    This handleSave function will:
-
+   check if:
+   -savedCountriesData in the .some doesn't match any of the saved countries, it'll run the function saveCountriesToApPI function to start the process of saving the function
+   -Else, if it's already saved, than it'll alert the user "This country has already been saved"
   */
    function handleSave() {
     if (!savedCountriesData.some(country => country.name.common === foundCountryMatch.name.common)) {
@@ -51,14 +55,36 @@ export default function CountryDetail({countriesData}) {
       alert("This country has already been saved");
     }
   
+    /*
+     - This makes the isReacting useState set to 'true'
+     -It'll timeout the 'true' state back to 'false' after 5000ms in order to reset the animation to be used when needed
+    */
     setIsReacting(true);
     setTimeout(() => {
       setIsReacting(false);
     }, 5000);
   }
   
+  /*
+   This is an async function called saveCountriesToAPI, it will:
+   - TRY:
+     - Declare a variable response
+     - Await fetch in response before going to next steps
+     - Inside api fetch place the endpoint a '/save-one-country'
+     - make the method 'POST'
+     - Make the headers 'ContentType' & 'application/json'
+     - The body needs to be stringified and have keypairs of 'country_name' and countryName
+     - After make an if statment for the try
+       - If the contentType and reponse includes 'application/json', than pass data.savedCountriesData through setSavedCountriesData
+       - Else declare a variable named 'textOutCome' and await the 'respose' and give the 'response' back as a string
+       - Console log the server confirmation
+   - CATCH will:
+     - pass an err to the params of 'catch'
+     - It'll console log the error that the countries api had an error updating
+  */
     async function saveCountriesToAPI() {
-      await fetch(`https://backend-answer-keys.onrender.com/save-one-country`, {
+      try { 
+        const response = await fetch(`https://backend-answer-keys.onrender.com/save-one-country`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,33 +93,32 @@ export default function CountryDetail({countriesData}) {
           "country_name": countryName
         })
       })
-    }
+      const contentType = response.headers.get("content-type"); 
 
-    
-    /*
-   storeCountry:
-   NEEDS TO BE COMPLETED
-  */
-   const storeCountry = () => {
-   
+      if (contentType && contentType.includes("application/json")) {
+       const data = await response.json();
+       setSavedCountriesData(data.savedCountriesData);
+       console.log("Updated saved Countries", data.savedCountriesData);
+      } else {
+        const textOutcome = await response.text();
+        console.log("Server confirmation:", textOutcome);
+      }
+     } catch (err) {
+      console.error("Error updating Countries to api:", err);
+    }
   };
 
   /*
-  storeAndUpdateCount uses an async arrow function to:
-  -Try:
-     - To declare response than have it await for the api fetch call
-     - At the end-point of the fetch have '/update-one-country-count'
-     - Have three objects inside that declare what metadata it needs/what we're looking for
-     - method needs: 'POST'
-     - headers need 'Content-Type' to be 'application/json'
-     - The body will be stringified and have a key pair of 'country_name' and countryName
-     - it'll than declare data and await the response of json
-     - We than pass data.count into setCount to pass the new information through it
-  -Catch an error if this doesn't run than:
-     - pass 'err' to signfy that there's been an error
-     - the console will log an error and say 'Error updating counter
+   -storeAndUpdateCount is an async arrow function that will:
+   Try
+    -to fetch a response and wait until it's completed
+    -This will use the method POST
+    -The body willbe stringified and use the countryName declared earlier
+    -Await a reponse and save it in the delcared variable called 'data'
+    -Pass the data.count into the setCount useState
+  Catch  
+  -Will 'catch' an error if there's one and log the error
   */
-
   const storeAndUpdateCount = async ()  => {
    try { 
     const response = await fetch (`https://backend-answer-keys.onrender.com/update-one-country-count`, {
@@ -110,7 +135,6 @@ export default function CountryDetail({countriesData}) {
     })
     const data = await response.json();
     setCount(data.count);
-  console.log("Updated counter:", data.count);
    } catch (err) {
     console.error("Error updating counter:", err);
   }
@@ -125,11 +149,10 @@ export default function CountryDetail({countriesData}) {
      savedCountriesData.some(saved => saved.name.common === foundCountryMatch.name.common) 
     : false;
 
-    // On load it runs storeCountry and storeAndUpdateCount
+    // On load it runs storeAndUpdateCount
   useEffect(() => {
     storeAndUpdateCount();
-    storeCountry();
-  },[]);
+  },[/*It says it requires a dependency but as requested I didn't put one inside*/]);
 
 
   /*

@@ -35,28 +35,26 @@ This is our WHAT, WHEN, WHERE, HOW framework for working with data:
 ## 🔶 STORING FORM DATA
 
 WHAT...
-TYPE OF HTTP REQUEST (GET OR POST): **POST**
-API ENDPOINT: **/add-one-user**
+TYPE OF HTTP REQUEST (GET OR POST): POST
+API ENDPOINT: /add-one-user
 
-REQUEST BODY DATA TYPE (if applicable): **Object**
-REQUEST BODY (if applicable): ** {
+REQUEST BODY DATA TYPE (if applicable): Object
+REQUEST BODY (if applicable): {
   "name": "Alice",
   "country_name": "Germany",
   "email": "alice@example.com",
   "bio": "A little about Alice"
-}**
+}
 
-RESPONSE DATA TYPE: **String**
-RESPONSE: **Success! User has been added.**
+RESPONSE DATA TYPE: String
+RESPONSE: Success! User has been added
 
-WHEN: **On submitting the Form**
+WHEN: On submitting the Form
 
-WHERE: **in the handleSubmit function, in the SavedCountries.jsx file**
+WHERE: In the handleSubmit function, in the SavedCountries.jsx file
 
 HOW:
 Step 1: Declare a new function called storeUserData() which should send a POST request to the API to the add-one-user endpoint
-Step 2: **\_\_\_**
-Step 3: **\_\_\_**
 Add more steps as needed!
 
 ---
@@ -64,14 +62,14 @@ Add more steps as needed!
 ## 🔶 RETRIEVING FORM DATA
 
 WHAT...
-TYPE OF HTTP REQUEST (GET OR POST): **GET**
-API ENDPOINT: **/get-newest-user**
+TYPE OF HTTP REQUEST (GET OR POST): GET
+API ENDPOINT: /get-newest-user
 
-REQUEST BODY DATA TYPE (if applicable): **N/A**
-REQUEST BODY (if applicable): **N/A**
+REQUEST BODY DATA TYPE (if applicable): N/A
+REQUEST BODY (if applicable): N/A
 
-RESPONSE DATA TYPE: **array object**
-RESPONSE: **[
+RESPONSE DATA TYPE: Array object
+RESPONSE: [
   {
     "user_id": 42,
     "name": "John Smith",
@@ -79,7 +77,7 @@ RESPONSE: **[
     "email": "john@example.com",
     "bio": "Another bio"
   }
-]**
+]
 
 WHEN: **When user loads back on SavedCountries**
 
@@ -109,7 +107,7 @@ REQUEST BODY (if applicable): {
   "country_name": "Brazil"
 }
 
-RESPONSE DATA TYPE: **string**
+RESPONSE DATA TYPE: String
 RESPONSE: Success! The country is saved
 
 WHEN: When the user clicks the save button in CountryDetails page
@@ -117,7 +115,7 @@ WHEN: When the user clicks the save button in CountryDetails page
 WHERE: In the handleSave function in the CountryDetails page. The save button is in the CountryCard
 
 HOW:
-Step 1: **Declare a function called handleSave**
+Step 1: Declare a function called handleSave
 Step 2: handleSave will check if savedCountriesData has been saved.
 Step 3: If savedCountriesData isn't saved already, it'll run saveCountriesToAPI function
 Step 4: That function will have an 'await' feature with the api in it for the saved countries with an endpoint like '/save-one-country'
@@ -132,30 +130,30 @@ Add more steps as needed!
 ## 🔶 RETRIEVING SAVED COUNTRIES DATA
 
 WHAT...
-TYPE OF HTTP REQUEST (GET OR POST): **GET**
-API ENDPOINT: **/get-all-saved-countries**
+TYPE OF HTTP REQUEST (GET OR POST): GET
+API ENDPOINT: /get-all-saved-countries
 
-REQUEST BODY DATA TYPE (if applicable): **N/A**
-REQUEST BODY (if applicable): **N/A**
+REQUEST BODY DATA TYPE (if applicable): N/A
+REQUEST BODY (if applicable): N/A
 
-RESPONSE DATA TYPE: **array objects**
-RESPONSE: **[
+RESPONSE DATA TYPE: Array objects
+RESPONSE: [
   {
     "country_name": "Japan"
   },
   {
     "country_name": "Germany"
   }
-]**
+]
 
-WHEN: **When user goes to SavedCountries page**
+WHEN: When user goes to SavedCountries page
 
-WHERE: **Over the profile page and under 'Saved Countries' header**
+WHERE: Over the profile page and under 'Saved Countries' header
 
 HOW:
-Step 1: **\_\_\_**
-Step 2: **\_\_\_**
-Step 3: **\_\_\_**
+Step 1: 
+Step 2: 
+Step 3: 
 Add more steps as needed!
 
 ---
@@ -169,28 +167,28 @@ Add more steps as needed!
 NOTE: We combine storing & retrieving country counts data into one section because they always happen together. Each time we look up a country’s view count, we also need to increase it and save the new total.
 
 WHAT...
-TYPE OF HTTP REQUEST (GET OR POST): **POST**
-API ENDPOINT: **/update-one-country-count**
+TYPE OF HTTP REQUEST (GET OR POST): POST
+API ENDPOINT: /update-one-country-count
 
-REQUEST BODY DATA TYPE (if applicable): **object**
-REQUEST BODY (if applicable): **{
+REQUEST BODY DATA TYPE (if applicable): object
+REQUEST BODY (if applicable): {
   "country_name": "France"
-}**
+}
 
-RESPONSE DATA TYPE: **Object**
-RESPONSE: **{
+RESPONSE DATA TYPE: Object
+RESPONSE: {
   "count": 3
-}**
+}
 
-WHEN: **When the user goes to check and view CountryDetails in useEffect**
+WHEN: When the user goes to check and view CountryDetails in useEffect
 
-WHERE: **In the country's detail page**
+WHERE: In the country's detail page
 
 HOW:
 Step 1: Delcare an async function 'storeAndUpdate'
 Step 2: The next line has an await fetch call for the api with the a dynamic country feature and '/update-one-country-count' as th endpoint
 Step 3: declare the method, which is POST
 Step 4: What will be used for the metadata
-Step 5: Wht the body needs
+Step 5: What the body needs
 Step 6: 
 Add more steps as needed!
