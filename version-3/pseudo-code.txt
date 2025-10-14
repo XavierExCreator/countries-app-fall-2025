@@ -151,9 +151,14 @@ WHEN: When user goes to SavedCountries page
 WHERE: Over the profile page and under 'Saved Countries' header
 
 HOW:
-Step 1: 
-Step 2: 
-Step 3: 
+Step 1: Declare the showSavedCountries in an async arrow function
+Step 2: Declare a const response variable to fetch and await the api call inside a 'try'
+Step 3: The end-point is /get-all-saved-countries
+Step 4: The method we're using is GET
+Step 5: The headers 'Content-Type': 'application/json'
+Step 6: Declare a const data variable to await for the response.json
+Step 7: Pass the data through setUserSavedCountry
+Step 8: If there's an error 'catch' it through the catch
 Add more steps as needed!
 
 ---
@@ -185,10 +190,13 @@ WHEN: When the user goes to check and view CountryDetails in useEffect
 WHERE: In the country's detail page
 
 HOW:
-Step 1: Delcare an async function 'storeAndUpdate'
-Step 2: The next line has an await fetch call for the api with the a dynamic country feature and '/update-one-country-count' as th endpoint
+Step 1: Delcare an async function 'storeAndUpdateCount'
+Step 2: The next line has an await fetch call for the api and '/update-one-country-count' as th endpoint
 Step 3: declare the method, which is POST
-Step 4: What will be used for the metadata
-Step 5: What the body needs
-Step 6: 
+Step 4: The headers are 'Content-Type': 'applicarion/json'
+Step 5: The body will be stringified and have "country_name": countryName
+Step 6: We'll declare a variable thats const and have it await a response.json
+Step 7: We'll than pass the datas' count into setCount useState
+Step 8: This will be in a 'try'
+Step 9: If the try fails 'catch' the error
 Add more steps as needed!

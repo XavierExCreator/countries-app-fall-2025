@@ -176,7 +176,7 @@ export default function SavedCountries({countriesData}) {
             );
 
             return matchedCountry ? (
-              <CountryCard 
+              <CountryCard
               key={savedCountry.country_name}
               country={matchedCountry}
               variant="savedCountries"
