@@ -23,14 +23,14 @@ export default function SavedCountries() {
      */
     const [userSavedCountry, setUserSavedCountry] = useState([]);
 
-    useEffect(() => {
+
+    function SavedCountries() {
       if(localStorage.getItem('savedCountries')) {
         let destringifiedCountry = JSON.parse(localStorage.getItem('savedCountries'));
         setUserSavedCountry(destringifiedCountry);
       }
       else { console.log("localStorage couldn't find any saved data") }
-    }, []);
-
+    }
     /*
      -'handleChange' targets the name of the inputs in the form below
      -It targets name and value in order to update the information on the form
@@ -69,6 +69,7 @@ export default function SavedCountries() {
        -Make sure this only runs once on load
       */
       useEffect(() => {
+        SavedCountries();
         getUser();
       }, []);
 
