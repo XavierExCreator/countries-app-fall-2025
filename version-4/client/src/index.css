@@ -57,6 +57,12 @@ body, form {
   margin-left: 3rem;
 }
 
+
+.savedCardsInsideDiv {
+  display: flex;           /* make children align horizontally */
+  flex-flow: row;
+  gap: 16px;               /* space between cards */
+}
 input {
  border-radius: 5px;
 }

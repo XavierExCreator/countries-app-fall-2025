@@ -167,14 +167,13 @@ export default function SavedCountries({countriesData}) {
     <div className='savedCountryDiv'>
         <h2>My saved Countries</h2>
         {userInfo && <h2>Welcome back, {userInfo.usersName}!</h2>}
-         
+         <div className="savedCardsInsideDiv ">
          {userSavedCountry && userSavedCountry.length > 0 ? (
           userSavedCountry.map((savedCountry) => {
             const matchedCountry = countriesData.find(
               (country) =>
                 country.name.common.toLowerCase() === savedCountry.country_name.toLowerCase()
             );
-
             return matchedCountry ? (
               <CountryCard
               key={savedCountry.country_name}
@@ -185,7 +184,7 @@ export default function SavedCountries({countriesData}) {
           })
         ) : (
           <p>No countries are saved</p>
-         )}
+         )} </div>
 
     <legend><h2>My Profile</h2>
     <form className='userForm' onSubmit={handleSubmit}>
