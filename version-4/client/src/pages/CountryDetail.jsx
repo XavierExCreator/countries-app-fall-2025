@@ -51,8 +51,8 @@ export default function CountryDetail({countriesData}) {
    function handleSave() {
     if (!savedCountriesData.some(country => country.name.common === foundCountryMatch.name.common)) {
       saveCountriesToAPI();
-    } else {
-      alert("This country has already been saved");
+    } else if (savedCountriesData.some(country => country.name.common === foundCountryMatch.name.common)) {
+      alert("This country has already been saved- would you like ");
     }
   
     /*

@@ -77,7 +77,7 @@ app.get("/get-all-users", async (req, res) => {
 });
 
 app.post("/add-one-user", async (req, res) => {
-    const newUser = await addOneUser();
+    const newUser = await addOneUser(name, country_name, email, bio);
     res.json(newUser);
 });
 
@@ -86,17 +86,19 @@ app.get("/get-all-saved-countries", async (req, res) => {
     res.json(savedCountries);
 })
 
-app.post("/save-one-country", async (req, res) => {
-    const oneCountry = await saveOneCountry();
+app.post("/save-one-country:country_name", async (req, res) => {
+    const oneCountry = await saveOneCountry(country_name);
     res.json(oneCountry);
 })
 
-app.post("/unsave-one-country", async (req, res) => {
-    const unsaveCountry = await unsaveOneCountry();
+app.post("/unsave-one-country:country_name", async (req, res) => {
+    const unsaveCountry = await unsaveOneCountry(country_name);
     res.json(unsaveCountry);
 })
 
 app.post("/update-one-country-count", async (req, res) => {
-    const updateCount = await updateOneCountryCount();
+    const updateCount = await updateOneCountryCount(country_name);
     res.json(updateCount);
 })
+
+
