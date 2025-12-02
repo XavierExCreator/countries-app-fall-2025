@@ -1,12 +1,11 @@
-import {useParams} from 'react-router-dom'; //importing useParams
-import CountryCard from '../components/CountryCard.jsx'; //importing CountryCard to use below
-import Button from '../components/Button.jsx'; //importing button to use for conditional rendering below
-import {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
+import CountryCard from '../components/CountryCard.jsx';
+import Button from '../components/Button.jsx';
+import { useState, useEffect } from 'react';
 
 /*
 CountryDetail is already exported and has a destructured placeholder in order to get data from the API being called in App.jsx */
 export default function CountryDetail({countriesData}) {
-
 
   /*
    savedCountriesData: is saving the country that the user decides to save
@@ -49,10 +48,10 @@ export default function CountryDetail({countriesData}) {
    -Else, if it's already saved, than it'll alert the user "This country has already been saved"
   */
    function handleSave() {
-    if (!savedCountriesData.some(country => country.name.common === foundCountryMatch.name.common)) {
+    if (!savedCountriesData.some(country => country === foundCountryMatch.name.common)) {
       saveCountriesToAPI();
-    } else if (savedCountriesData.some(country => country.name.common === foundCountryMatch.name.common)) {
-      alert("This country has already been saved- would you like ");
+    } else {
+      return alert("This country has already been saved- would you like "); 
     }
   
     /*
@@ -82,31 +81,33 @@ export default function CountryDetail({countriesData}) {
      - pass an err to the params of 'catch'
      - It'll console log the error that the countries api had an error updating
   */
-    async function saveCountriesToAPI() {
-      try { 
-        const response = await fetch(`/api/save-one-country`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          "country_name": countryName
-        })
-      })
-      const contentType = response.headers.get("content-type"); 
-
-      if (contentType && contentType.includes("application/json")) {
-       const data = await response.json();
-       setSavedCountriesData(data.savedCountriesData);
-       console.log("Updated saved Countries", data.savedCountriesData);
-      } else {
-        const textOutcome = await response.text();
-        console.log("Server confirmation:", textOutcome);
+     async function saveCountriesToAPI() {
+      try {
+        const response = await fetch(`/api/save-one-country/${countryName}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ country_name: countryName }), // send in body
+        });
+    
+        const contentType = response.headers.get("content-type");
+    
+        if (contentType && contentType.includes("application/json")) {
+          const data = await response.json();
+          // Add the saved country to state
+          setSavedCountriesData(prev => [...prev, data.country_name]);
+          console.log("Updated saved country:", data.country_name);
+        } else {
+          const textOutcome = await response.text();
+          console.log("Server confirmation:", textOutcome);
+        }
+      } catch (err) {
+        console.error("Error saving country to API:", err);
       }
-     } catch (err) {
-      console.error("Error updating Countries to api:", err);
     }
-  };
+    
+    
 
   /*
    -storeAndUpdateCount is an async arrow function that will:
@@ -145,9 +146,9 @@ export default function CountryDetail({countriesData}) {
    - If it's defined it's check with .some
    - If it's not it comes off as 'false'
   */
-    let isSaved = foundCountryMatch ? 
-     savedCountriesData.some(saved => saved.name.common === foundCountryMatch.name.common) 
-    : false;
+   let isSaved = foundCountryMatch
+   ? savedCountriesData.some(saved => saved.country_name === foundCountryMatch.name.common)
+   : false;
 
     // On load it runs storeAndUpdateCount
   useEffect(() => {

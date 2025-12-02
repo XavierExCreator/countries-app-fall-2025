@@ -90,7 +90,6 @@ export default function SavedCountries({countriesData}) {
           })
         })
       }
-
     
 
       /*
@@ -116,7 +115,7 @@ export default function SavedCountries({countriesData}) {
        - Will make sure that the information in the form passes through the correct objectkey names in case the form the coder makes and the apis' information doesn't match
       */
       const getUser = async () => {
-        const response = await fetch('https://backend-answer-keys.onrender.com/get-newest-user');
+        const response = await fetch('/api/get-newest-user');
         const data = await response.json();
         const userData = data[0];
         setUserInfo({
