@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  color: #111517;
+  background-color:#fafafa;
+}
+
+nav {
+  padding: 0;
+  margin: -1rem;
+  background: white;
+  height: 90px; /* adjust */
+  box-shadow: 0 2px 4px -2px rgba(0,0,0,0.2);
+  margin-bottom: 3rem;
+}
+
+ul {
+  padding-right: 3rem;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  font-weight: 500;
+}
+
+.navBar {
+  align-items:center;
+}
+
+span {
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, a {
+  color: #111517;
+}
+
+body, form {
+  font-family: "Nunito Sans", sans-serif;
+}
+.submitButton {
+  background-color: #7672ce;
+  color: white;
+  padding: .5rem 1.5rem;
+  border-radius: 3px;
+}
+
+.savedCountryDiv{
+  margin-left: 3rem;
+}
+
+
+.savedCardsInsideDiv {
+  display: flex;           /* make children align horizontally */
+  flex-flow: row;
+  flex-wrap: wrap;
+  gap: 16px;               /* space between cards */
+}
+input {
+ border-radius: 5px;
+}
+
+textarea {
+ padding-top: 10rem;
+}
+
+input, textarea {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  min-width: 25rem;
+  max-width: 25rem;
+  color: #858585;
+}
+
+
+button, input{
+  box-shadow: 1px 1px 5px 1px rgb(52%, 52%, 52%, 20%);
+  border: transparent;
+}
+
+.backBtn {
+  position: absolute;
+  margin-left: 3rem;
+}
+
+.saveBtn {
+  background-color: gray;
+}
+
+@keyframes saveButton {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.3); background-color: rgb(132, 90, 90);}
+  50% { transform: scale(0.9); background-color: rgb(148, 57, 57) ;}
+  70% { transform: scale(1.1);background-color: rgb(187, 27, 27);}
+  100% { transform: scale(1); background-color: rgb(233, 7, 7);}
+}
+
+.isReacting {
+  animation: saveButton 4s;
+}
+
+.cardIsSaved {
+  background-color: .5s ease;
+ background-color: red;
+}
+
