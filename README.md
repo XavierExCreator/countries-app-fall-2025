@@ -106,7 +106,6 @@ This is what you can do on the app:
 - Can search up in the homescreen the country you're looking for
 - Can save the country flags
 - Can fill out a form for the users
-- ***
 
 ## 🛠️ Tech Stack
 
