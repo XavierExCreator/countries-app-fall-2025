@@ -1,82 +1,3 @@
-# 🌍 Countries App
-
-## 👋 Welcome!
-
-Throughout the Backend course, you will build a full-stack web application that displays information about countries around the world.
-
-## 📝 Instructions
-
-Each version of this app has a different set of instructions:
-
-- [Version 0 Instructions](https://github.com/AnnieCannons/countries-app-instructions/tree/main/version-0)
-- [Version 1 Instructions](https://github.com/AnnieCannons/countries-app-instructions/tree/main/version-1)
-- [Version 2 Instructions](https://github.com/AnnieCannons/countries-app-instructions/tree/main/version-2)
-- [Version 3 Instructions](https://github.com/AnnieCannons/countries-app-instructions/tree/main/version-3)
-- [Version 4 Instructions](https://github.com/AnnieCannons/countries-app-instructions/tree/main/version-4)
-- [Version 5 Instructions](https://github.com/AnnieCannons/countries-app-instructions/tree/main/version-5)
-
-All instructions live in the [countries-app-instructions Github repo](https://github.com/AnnieCannons/countries-app-instructions).
-
-## 🔗 Resources
-
-- **Figma Designs:** Use this [Figma file](https://www.figma.com/design/YuEMNteoQic0h6RRiYprpV/Countries-API-Project?m=auto&t=C9b6FsfUdPspzaqu-1) for the designs
-- **API:** Use the [REST Countries API](https://restcountries.com) to get the country data and flag images
-- **Documentation Guides:** The teaching team at AnnieCannons has provided some [handy guides](https://docs.google.com/document/d/18jxCUA0bebCyYaIHy8aaKMgOQH4w5-b-iCGDWpV4K4M/edit?tab=t.0#heading=h.ykdbmvmlp0ag) to help you use Github and other coding tools
-- **Feeling stuck with React?** A solid grasp of the core React concepts is key to building this project. If you need to brush up, check out the [Learn React docs](https://react.dev/learn) or working through the [React Tic-Tac-Toe tutorial](https://react.dev/learn/tutorial-tic-tac-toe).
-
-# 📝 Writing a README
-
-A well-written README helps others (and your future self!) understand, use, and appreciate your project. Here’s a quick guide to writing one.
-
-## 📌 What is a README?
-
-A `README.md` is usually the **first** thing someone sees in your repo. It gives an **overview** of what your **project** is about, how to use it, and how it works.
-
-You spent hours on your project — spend at least 30 minutes writing a clear README.
-It’s your chance to tell the world what your hard work is all about!
-
-## 🧹 Tips
-
-- Don’t overthink it! Just explain your project clearly
-- Use headers, bullet points, and links to keep it easy to read
-- Update the README if your project changes
-
-## ✨ Example of a README
-
-- Coming soon!
-
-## 🎨 Markdown Formatting Tips
-
-README files use **Markdown** (`.md`) to style content.
-
-### Common Markdown formatting:
-
-```markdown
-# H1 (Main title)
-
-## H2 (Section)
-
-### H3 (Subsection)
-
-**bold text**  
-_italic text_  
-`inline code`
-
-- bullet points
-
-1. numbered lists
-
-[Link text](https://example.com)
-
-![Alt text for image](./images/image.png)
-```
-
-# Fill Out the Template Below ⬇️
-
-Once you're done filling out the template, paste it into your Github repo's main `README.md` file!
-
----
-
 # 📝 countries-app-all-2025
 
 ## 📌 Project Description & Purpose
@@ -87,25 +8,28 @@ This project is `countries-app-fall-2025`
 
 Check out the app: https://countrys-app-version-5.netlify.app/
 
-## 🖼️ Screenshots
-
-Here is where you'll include a screenshot of your project to show it off!
-
-Your instructor will walk you through this process with the rest of the class. Please be patient until the time comes! In the meantime, you can fill out all other sections of this template.
-
-1. Use `Command + Control + Shift + 4` to take a screenshot of your site and copy the screenshot to your clipboard
-2. Find your Github README.md file on the Github website
-3. Edit the site by clicking on the Pencil icon ✏️
-4. Move your cursor to the position where you want to paste the screenshot, then paste it. Github will convert the pasted screenshot into an `<img>` tag
-5. Select "Commit changes..." to save your changes
-
-## ✨ Features
+## ✨ Features with 🖼️ Screenshots
 
 This is what you can do on the app:
 
 - Can search up in the homescreen the country you're looking for
-- Can save the country flags
+  <img width="1265" height="663" alt="image" src="https://github.com/user-attachments/assets/a5ed11c0-9817-4534-a5fa-9b4ddca5b38d" />
+
+- In the SavedCountries page section, you may see the newest users sign in as well as the countries already saved
+  <img width="1264" height="664" alt="image" src="https://github.com/user-attachments/assets/75e20698-29ee-44fb-9e9d-0cf4cc8855d0" />
+
 - Can fill out a form for the users
+  <img width="542" height="573" alt="image" src="https://github.com/user-attachments/assets/3f2778f5-901b-4fa7-9aeb-e7d4e7868d08" />
+
+- You can click on the flags and see an up close inspection of the flag inclusing the views and save the country flag and save it
+  <img width="1280" height="664" alt="image" src="https://github.com/user-attachments/assets/be2737bc-aa03-4523-a9d5-269cbdd4d255" />
+
+## -----THESE FEATURES BELOW WILL BE ADDED SOON------
+
+- You can also unsave any country already saved! (image is a stock for the mean time as a button isn't visibly available
+  <img width="140" height="113" alt="image" src="https://github.com/user-attachments/assets/f55280b8-5bee-4e0f-88c8-c472f164db45" />
+- The button is animated for the user to see the progress of the save
+  <img width="89" height="41" alt="image" src="https://github.com/user-attachments/assets/dac57568-e0f1-4b69-992d-3e566a3b7e2b" />
 
 ## 🛠️ Tech Stack
 
