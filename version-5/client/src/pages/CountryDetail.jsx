@@ -43,13 +43,6 @@ export default function CountryDetail({countriesData}) {
         return searchingCountries;
     };
   
-
-
-    // setIsReacting(true);
-    // setTimeout(() => {
-    //   setIsReacting(false);
-    // }, 5000);
-  
   /*
    This is an async function called saveCountriesToAPI, it will:
    - TRY:

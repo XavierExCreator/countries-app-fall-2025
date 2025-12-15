@@ -61,10 +61,10 @@ export default function SavedCountries({countriesData}) {
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
       };
 
-      async function storeUsersData() { 
+      async function storeUsersData(formData) { 
           //  When we call the fetch() function, we only need to pass in the API url as one parameter when it’s a GET request.
           //  When it’s a POST request we need to pass a second parameter: an Object
-        await fetch ('/https://backend-answer-keys.onrender.com/add-one-user', {
+        await fetch ('/api/add-one-user', {
           /*
            We need to say we're sending a POST request because by default it's always a GET request
           */
