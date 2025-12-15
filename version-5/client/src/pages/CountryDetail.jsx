@@ -12,9 +12,9 @@ export default function CountryDetail({countriesData}) {
    isReacting: Causes a specialeffect using CSS Animations to show the user that the country is being saved
    count: Is to track how many times a country has been viewed
   */
-  const [savedCountriesData, setSavedCountriesData] = useState([]);
 
-  const [isReacting, setIsReacting] = useState(false);
+   
+  const [savedCountriesData, setSavedCountriesData] = useState([]);
 
   const [count, setCount] = useState(0)
   
@@ -26,8 +26,10 @@ export default function CountryDetail({countriesData}) {
   /*
   foundCountryMatch needs to look through countriesData to find the clicked country 
   */
-  const foundCountryMatch = countriesData.find(clickedCountry);
+  const foundCountryMatch = countriesData.find(findMatchingCountryName);
   
+  console.log('foundCountryMatch', foundCountryMatch);
+
   /*
        clickedCountry:
        - Passes country into the param
@@ -36,33 +38,17 @@ export default function CountryDetail({countriesData}) {
        - Both country and countryName are made to be lowercased, split at the '-' and join adding a space to have both their information match
        - searchingCountries is return so that countries data can continue it's saving countries process.
       */
-       function clickedCountry(country) {
+       function findMatchingCountryName(country) {
         const searchingCountries = country.name.common.toLowerCase().split("-").join(" ") === countryName.toLowerCase().split("-").join(" ");
         return searchingCountries;
     };
   
-  /*
-   This handleSave function will:
-   check if:
-   -savedCountriesData in the .some doesn't match any of the saved countries, it'll run the function saveCountriesToApPI function to start the process of saving the function
-   -Else, if it's already saved, than it'll alert the user "This country has already been saved"
-  */
-   function handleSave() {
-    if (!savedCountriesData.some(country => country === foundCountryMatch.name.common)) {
-      saveCountriesToAPI();
-    } else {
-      return alert("This country has already been saved- would you like "); 
-    }
-  
-    /*
-     - This makes the isReacting useState set to 'true'
-     -It'll timeout the 'true' state back to 'false' after 5000ms in order to reset the animation to be used when needed
-    */
-    setIsReacting(true);
-    setTimeout(() => {
-      setIsReacting(false);
-    }, 5000);
-  }
+
+
+    // setIsReacting(true);
+    // setTimeout(() => {
+    //   setIsReacting(false);
+    // }, 5000);
   
   /*
    This is an async function called saveCountriesToAPI, it will:
@@ -97,7 +83,7 @@ export default function CountryDetail({countriesData}) {
           const data = await response.json();
           // Add the saved country to state
           setSavedCountriesData(prev => [...prev, data.country_name]);
-          console.log("Updated saved country:", data.country_name);
+          console.log("Updated saved country:", savedCountriesData);
         } else {
           const textOutcome = await response.text();
           console.log("Server confirmation:", textOutcome);
@@ -140,15 +126,8 @@ export default function CountryDetail({countriesData}) {
     console.error("Error updating counter:", err);
   }
 };
- 
-  /*
-   isSaved will check whether foundCountryMatch is defined or not
-   - If it's defined it's check with .some
-   - If it's not it comes off as 'false'
-  */
-   let isSaved = foundCountryMatch
-   ? savedCountriesData.some(saved => saved.country_name === foundCountryMatch.name.common)
-   : false;
+
+  //  console.log('how foundCountryMatch.name.common looks', foundCountryMatch.name.common);
 
     // On load it runs storeAndUpdateCount
   useEffect(() => {
@@ -175,7 +154,7 @@ export default function CountryDetail({countriesData}) {
       {countriesData.length > 0 
       ? (foundCountryMatch 
           ? <div>
-            <CountryCard country={foundCountryMatch} variant='inspectCard' spotOne={<Button text='← Back' className='backBtn' />} spotTwo={<Button text='Save' className={isReacting ? 'saveBtn isReacting' : isSaved ? 'saveBtn cardIsSaved' : 'saveBtn'} onClick={handleSave}/>}
+            <CountryCard country={foundCountryMatch} variant='inspectCard' spotOne={<Button text='← Back' className='backBtn' />} spotTwo={<Button text='Save' className='saveBtn' onClick={saveCountriesToAPI}/>}
             spotThree={<li>Viewed: <span>{count} times</span></li>}/>
             </div>
           : <p>Loading chosen country in progress...</p>

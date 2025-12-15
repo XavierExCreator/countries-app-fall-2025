@@ -6,18 +6,6 @@ import {useEffect, useState} from "react";
  -The CountryCard has a key and the countries coresponding details in it
  -This variant version is 'home' and will be styled by CountryCard.modules.css
 */
-// export default function Home({countriesData}) {
-
-//     return ( <>
-    
-//     <div className={styles.countryDiv}>
-//     {countriesData.map((country) => (
-//         <CountryCard key={country.cca3} country={country} variant='home'/>
-//           ))}   
-//           </div>
-//     </>)
-//   }
-
 
 export default function Home({ countriesData }) {
   const [searchInput, setSearchInput] = useState("");
