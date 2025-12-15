@@ -9,10 +9,8 @@ export default function CountryDetail({countriesData}) {
 
   /*
    savedCountriesData: is saving the country that the user decides to save
-   isReacting: Causes a specialeffect using CSS Animations to show the user that the country is being saved
    count: Is to track how many times a country has been viewed
   */
-
    
   const [savedCountriesData, setSavedCountriesData] = useState([]);
 
@@ -27,8 +25,6 @@ export default function CountryDetail({countriesData}) {
   foundCountryMatch needs to look through countriesData to find the clicked country 
   */
   const foundCountryMatch = countriesData.find(findMatchingCountryName);
-  
-  console.log('foundCountryMatch', foundCountryMatch);
 
   /*
        clickedCountry:
@@ -136,8 +132,7 @@ export default function CountryDetail({countriesData}) {
         - Show CountryCard and place the foundCountryMatch inside the 'country' prop
         - Display the variant as 'inspectCard'(for CSS)
         - Fill in SpotOne prop with a Back Button
-        - Make className animated through CSS to show the user visuals that they're svaing a button when it's clicked
-        - onClick will active the handleSave function
+        - onClick will active the saving api function
         -Fill in spot three with the times the flag has been viewed using the count useState delcared and posted earlier in the code
     - If foundCountryMatch hasn't loaded yet it'll say 'Loading chosen country in progress...' to the user until it does
    -If it hasn't found it yet, it'll say Locating API Data to the user
